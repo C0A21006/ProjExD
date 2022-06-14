@@ -20,8 +20,8 @@ def kaito(n,ans):
         if ans == kotae[n][i]:
             print("正解")
             break
-    else:
-        print("不正解")
+        else:
+            print("不正解")
     
 if __name__ == "__main__":
     main()
