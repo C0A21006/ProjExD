@@ -49,4 +49,4 @@ def kaitou(seikai):
         return 1 #完全正解の場合
 
 if __name__ == "__main__":
-    main()
+    main()      
