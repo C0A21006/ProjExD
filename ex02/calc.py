@@ -1,3 +1,4 @@
+from cgitb import text
 import tkinter as tk
 import tkinter.messagebox as tkm
 
@@ -9,6 +10,8 @@ def button_click(event):
             res = eval(eqn)
             entry.delete(0, tk.END)
             entry.insert(tk.END, res)
+        elif num == "AC":
+            entry.delete(0, tk.END)
         else:
             #tkm.showinfo("", f"{num}ボタンがクリックされました")
             entry.insert(tk.END, num)
@@ -22,7 +25,7 @@ if __name__ == "__main__":
     entry.grid(row=0, column=0, columnspan=4)
 
     r, c = 1, 0 #r:行番号　c:列番号
-    for i, num in enumerate(["**", "**0.5", "", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "*-1", 0, ".", "="]): #表示させる文字
+    for i, num in enumerate(["**", "**0.5", "AC", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "*-1", 0, ".", "="]): #表示させる文字
         btn = tk.Button(root,
                         text=f"{num}",
                         width=4,
