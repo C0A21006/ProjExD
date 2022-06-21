@@ -22,18 +22,18 @@ if __name__ == "__main__":
     entry.grid(row=0, column=0, columnspan=4)
 
     r, c = 1, 0 #r:行番号　c:列番号
-    for i, num in enumerate([7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "*-1", 0, ".", "="]):
+    for i, num in enumerate(["**", "**0.5", "", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", "*-1", 0, ".", "="]):
         btn = tk.Button(root,
                         text=f"{num}",
                         width=4,
-                        height=2,
+                        height=1,
                         font=("Times New Roman", 30)
                         )
         btn.bind("<1>", button_click)
         btn.grid(row=r, column=c)
 
         c += 1
-        if (i+1)%4 == 0:
+        if (i+1)%4 == 0: #4分割
             r += 1
             c = 0
 
