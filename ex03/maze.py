@@ -11,7 +11,7 @@ def key_up(event):
 
 def main_proc():
     global cx, cy, mx, my
-    delta = { #キー：推されているキー/値：移動幅リスト[x,y]
+    delta = { #キー：押されているキー/値：移動幅リスト[x,y]
         "Up"   :[0,-1],
         "Down" :[0,+1],
         "Left" :[-1,0],
@@ -24,12 +24,17 @@ def main_proc():
         pass
     cx, cy = mx*100+50, my*100+50
     canvas.coords("tori", cx, cy)
-    root.after(10, main_proc)
+    root.after(100, main_proc)
 
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
-
+    label = tk.Label(root,
+                text="おいす～＾＾",
+                font=("Ricty Diminished", 40)
+                )
+    label.pack()
+    
     canvas = tk.Canvas(root, width=1500, height=900, bg="black")
     canvas.pack()
     maze_bg = mm.make_maze(15,9) #1:壁/0:床
