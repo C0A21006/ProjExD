@@ -26,6 +26,12 @@ def main_proc():
     canvas.coords("tori", cx, cy)
     root.after(100, main_proc)
 
+    if cx == 1350 and cy == 750:
+        label = tk.Label(text="ゴール",
+                        font=("Times New Roman", 150)
+                        )
+        label.place(x=500, y=300)
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
