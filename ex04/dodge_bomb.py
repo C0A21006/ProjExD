@@ -1,6 +1,7 @@
 import random
 import pygame as pg
 import sys
+import tkinter as tk
 
 def main():
     clock = pg.time.Clock()
@@ -20,14 +21,17 @@ def main():
     kkimg_rct.center = 900, 400
 
     #練習５
-    bmimg_sfc = pg.Surface((20, 20)) #Surface
-    bmimg_sfc.set_colorkey((0, 0, 0))
-    pg.draw.circle(bmimg_sfc, (255, 0, 0), (10, 10), 10)
+    #bmimg_sfc = pg.Surface((100, 100)) #Surface
+    #bmimg_sfc.set_colorkey((0, 0, 0))
+    #pg.draw.circle(bmimg_sfc, (255, 0, 0), (50, 50), 50)
+
+    bmimg_sfc = pg.image.load("fig/pngwing.com.png")
+    bmimg_sfc = pg.transform.rotozoom(bmimg_sfc, 0, 2.0)
     bmimg_rct = bmimg_sfc.get_rect() #Rect
-    bmimg_rct.centerx = random.randint(0, screen_rct.width)
-    bmimg_rct.centery = random.randint(0, screen_rct.height)
-    vx = 1
-    vy = 1
+    bmimg_rct.centerx = random.uniform(0, screen_rct.width)
+    bmimg_rct.centery = random.uniform(0, screen_rct.height)
+    vx = 2
+    vy = 2
 
     while True:
         screen_sfc.blit(bgimg_sfc, bgimg_rct)
@@ -39,16 +43,16 @@ def main():
 
         #練習４
         key_states = pg.key.get_pressed() #辞書
-        if key_states[pg.K_UP]    == True:kkimg_rct.centery -= 1
-        if key_states[pg.K_DOWN]  == True:kkimg_rct.centery += 1
-        if key_states[pg.K_LEFT]  == True:kkimg_rct.centerx -= 1
-        if key_states[pg.K_RIGHT] == True:kkimg_rct.centerx += 1
+        if key_states[pg.K_UP]    == True:kkimg_rct.centery -= 2
+        if key_states[pg.K_DOWN]  == True:kkimg_rct.centery += 2
+        if key_states[pg.K_LEFT]  == True:kkimg_rct.centerx -= 2
+        if key_states[pg.K_RIGHT] == True:kkimg_rct.centerx += 2
         #練習７
         if check_bound(kkimg_rct, screen_rct) != (1, 1): #領域外だったら
-            if key_states[pg.K_UP]    == True:kkimg_rct.centery += 1
-            if key_states[pg.K_DOWN]  == True:kkimg_rct.centery -= 1
-            if key_states[pg.K_LEFT]  == True:kkimg_rct.centerx += 1
-            if key_states[pg.K_RIGHT] == True:kkimg_rct.centerx -= 1
+            if key_states[pg.K_UP]    == True:kkimg_rct.centery += 2
+            if key_states[pg.K_DOWN]  == True:kkimg_rct.centery -= 2
+            if key_states[pg.K_LEFT]  == True:kkimg_rct.centerx += 2
+            if key_states[pg.K_RIGHT] == True:kkimg_rct.centerx -= 2
         screen_sfc.blit(kkimg_sfc, kkimg_rct)
 
         #練習６
@@ -61,13 +65,13 @@ def main():
         yoko, tate = check_bound(bmimg_rct, screen_rct)
         vx *= yoko
         vy *= tate
-        
+
         #練習８
         if kkimg_rct.colliderect(bmimg_rct):
             return
 
         pg.display.update()
-        clock.tick(1000)
+        clock.tick(10000)
 
 #練習７
 def check_bound(rct, scr_rct):
