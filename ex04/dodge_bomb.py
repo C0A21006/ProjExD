@@ -1,9 +1,11 @@
+import random
 import pygame as pg
 import sys
 
 def main():
     clock = pg.time.Clock()
 
+    #練習１
     pg.display.set_caption("逃げろ！こうかとん")
     screen_sfc = pg.display.set_mode((1600, 900)) #Surface
     screen_rct = screen_sfc.get_rect() #Rect
@@ -11,10 +13,18 @@ def main():
     bgimg_rct = bgimg_sfc.get_rect() #Rect
     screen_sfc.blit(bgimg_sfc, bgimg_rct)
 
+    #練習３
     kkimg_sfc = pg.image.load("fig/6.png") #Surface
     kkimg_sfc = pg.transform.rotozoom(kkimg_sfc, 0, 2.0) #Surface
     kkimg_rct = kkimg_sfc.get_rect() #Rect
     kkimg_rct.center = 900, 400
+
+    #練習５
+    bmimg_sfc = pg.Surface((20, 20)) #Surface
+    pg.draw.circle(bmimg_sfc, (255, 0, 0), (10, 10), 10)
+    bmimg_rct = bmimg_sfc.get_rect() #Rect
+    bmimg_rct.centerx = random.randint(0, screen_rct.width)
+    bmimg_rct.centery = random.randint(0, screen_rct.height)
 
     while True:
         screen_sfc.blit(bgimg_sfc, bgimg_rct)
@@ -31,6 +41,9 @@ def main():
         if key_states[pg.K_LEFT]  == True:kkimg_rct.centerx -= 1
         if key_states[pg.K_RIGHT] == True:kkimg_rct.centerx += 1
         screen_sfc.blit(kkimg_sfc, kkimg_rct)
+
+        #練習５
+        screen_sfc.blit(bmimg_sfc, bmimg_rct)
         
         pg.display.update()
         clock.tick(1000)
