@@ -91,10 +91,12 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 return
+
         kkt.update(scr)
         bkd.update(scr)
         if kkt.rct.colliderect(bkd.rct):
             return
+
         pg.display.update()
         clock.tick(1000)
 
