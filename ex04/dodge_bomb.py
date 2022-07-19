@@ -25,6 +25,7 @@ def main():
     #bmimg_sfc.set_colorkey((0, 0, 0))
     #pg.draw.circle(bmimg_sfc, (255, 0, 0), (50, 50), 50)
 
+    #爆弾のイラストを挿入
     bmimg_sfc = pg.image.load("fig/pngwing.com.png")
     bmimg_sfc = pg.transform.rotozoom(bmimg_sfc, 0, 2.0)
     bmimg_rct = bmimg_sfc.get_rect() #Rect
